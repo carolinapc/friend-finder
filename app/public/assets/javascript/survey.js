@@ -26,6 +26,16 @@ $(document).ready(() => {
         $("#body-popup").append($("<p>").text(msg));    
         $('#myModal').modal('show');
     }
+
+    var disableSubmit = () => {
+        $("#submit").attr("disabled", true);
+        $("#submit").html('<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...').addClass('disabled');
+    }
+    var enableSubmit = () => {
+        $("#submit").removeAttr("disabled");
+        $("#submit").removeClass("disabled");
+        $("#submit").html(`<i class="fas fa-check"></i> Submit`);
+    }
     
     //creates the questions and its radio buttons elements
     questions.forEach((item, index) => {
@@ -52,7 +62,9 @@ $(document).ready(() => {
     
     $("#submit").click(() => {
         event.preventDefault();
-
+        
+        disableSubmit();
+        
         //remove the invalidfield class from the elements that was fixed by the user after the first submission
         $("input[type=radio]").parents('label').removeClass("invalidfield");
         
@@ -64,6 +76,8 @@ $(document).ready(() => {
             $("input[type=radio]:invalid").parents('label').addClass("invalidfield");
 
             showErrorPopup("You failed to answer some questions!");
+
+            enableSubmit();
 
             return false;
         }      
@@ -96,12 +110,14 @@ $(document).ready(() => {
                     $(`input[name='question${i}']`).prop("checked", false);
                     $(`input[name='question${i}']`).parents("label").removeClass("active");
                 }
+                $("#form").removeClass("was-validated");
 
             }
             else {
                 showErrorPopup(data.message);
             }
-            
+
+            enableSubmit();
         });
 
     });
