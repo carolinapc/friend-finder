@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/carolinapc/friend-finder/issues"
   },
-  "homepage": "https://github.com/carolinapc/friend-finder#readme"
+  "homepage": "https://github.com/carolinapc/friend-finder#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
