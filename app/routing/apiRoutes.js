@@ -9,28 +9,28 @@ module.exports = app => {
 
     //add new friend and respond with the compatible friend object
     app.post("/api/friends", (req, res) => {
-        let newFriend = req.body;
-        let friendMatched;
-
-        let lessDifference = 100; //sets an initial value higher than the greater possible number
-        friends.forEach(friend => {
-            let totalDifference = 0;
+        var newFriend = req.body;
+        var friendMatched;
+        
+        var lessDifference = 100; //sets an initial value higher than the greater possible number
+        for(person of friends) {
+            var totalDifference = 0;
 
             //sum all the differences on the score
-            for (let i = 0; i < 10; i++){
-                totalDifference += Math.abs(friend.score[i] - newFriend[i]); 
+            for (var i = 0; i < person.scores.length; i++){
+                totalDifference += Math.abs(parseInt(person.scores[i]) - parseInt(newFriend.scores[i])); 
             }
+            
             //check if the current total difference is less than less one
             if (totalDifference < lessDifference) {
                 lessDifference = totalDifference;
-                friendMatched = friend;
+                friendMatched = person;
             }
 
-        });
+        };
 
         friends.push(newFriend);
-
         res.json(friendMatched);
-
+        
     });
 }
