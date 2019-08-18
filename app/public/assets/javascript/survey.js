@@ -29,7 +29,7 @@ $(document).ready(() => {
     
     //creates the questions and its radio buttons elements
     questions.forEach((item, index) => {
-        let $newHeader = $("<h5>").text(item);
+        let $newHeader = $("<h5>").text(`${index+1}. ${item}`);
         $questions.append($newHeader);
 
         let $newDiv = $(`<div class="btn-group btn-group-toggle" data-toggle="buttons">`);
