@@ -1,14 +1,14 @@
 const questions = [
-    "Question 1",
-    "Question 2",
-    "Question 3",
-    "Question 4",
-    "Question 5",
-    "Question 6",
-    "Question 7",
-    "Question 8",
-    "Question 9",
-    "Question 10"
+    "I make friends easily.",
+    "I love large parties.",
+    "I believe in the importance of art.",
+    "I get angry easily.",
+    "I experience my emotions intensely.",
+    "I prefer variety to routine.",
+    "I like to solve complex problems.",
+    "I often eat too much.",
+    "I try to follow the rules.",
+    "I like to visit new places."
 ];
 
 
