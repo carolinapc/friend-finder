@@ -1,4 +1,18 @@
 var friends = require("../data/friends");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
+
+function doesFileExist(urlToFile)
+{
+    try {
+        var xhr = new XMLHttpRequest();
+        xhr.open('HEAD', urlToFile, false);
+        xhr.send();
+        return (xhr.status == "200");
+    } catch (error) {
+        return false;        
+    }
+}
 
 module.exports = app => {
 
@@ -19,7 +33,10 @@ module.exports = app => {
                 throw new Error("Name is required");
             }
             if (newFriend.photo.trim() === "") {
-                throw new Error("Link to the photo image is required");
+                throw new Error("URL to the photo image is required");
+            }
+            if (!doesFileExist(newFriend.photo.trim())) {
+                throw new Error("URL to the photo image is invalid");
             }
             if (newFriend.scores.length !== 10) {
                 throw new Error("You must send all the 10 questions score");

@@ -19,6 +19,13 @@ $(document).ready(() => {
     var removeClass = function (){
         $(this).siblings().removeClass("invalidfield");
     }
+
+    var showErrorPopup = msg => {
+        $("#title-popup").text("Ooops!");
+        $("#body-popup").empty();    
+        $("#body-popup").append($("<p>").text(msg));    
+        $('#myModal').modal('show');
+    }
     
     //creates the questions and its radio buttons elements
     questions.forEach((item, index) => {
@@ -56,6 +63,8 @@ $(document).ready(() => {
             event.stopPropagation();
             $("input[type=radio]:invalid").parents('label').addClass("invalidfield");
 
+            showErrorPopup("You failed to answer some questions!");
+
             return false;
         }      
         
@@ -70,8 +79,20 @@ $(document).ready(() => {
         }
         
         $.post("/api/friends", person, data => {
+            if (data.success) {
+                $("#title-popup").text("Closest Match");
+                let $img = $(`<img src="${data.match.photo}">`);
+
+                $("#body-popup").empty();
+                $("#body-popup").append($("<p id='match-name' class='text-center'>").text(data.match.name));    
+                $("#body-popup").append($img);
+
+                $('#myModal').modal('show');
+            }
+            else {
+                showErrorPopup(data.message);
+            }
             
-            console.log(data); 
         });
 
     });

@@ -48,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label for="photo">Link to your photo image (required)</label>
-                <input class="form-control" id="photo" placeholder="" type="text" required maxlength="200">
+                <input class="form-control" id="photo" placeholder="" type="text" required>
                 <div class="invalid-feedback">
                     Please provide the link.
                 </div>
@@ -58,7 +58,7 @@
             <hr>
             <div id="questions"></div>
             
-            <button class="btn btn-primary btn-block" id="submit" type="submit"><i class="fas fa-check"></i> Submit</button>
+            <button class="btn btn-primary" id="submit" type="submit"><i class="fas fa-check"></i> Submit</button>
         </form>
         <hr>
     </div>
@@ -70,7 +70,23 @@
         </p>
         <p class="text-center">&copy; Carolina Cavalcanti</p>
     </footer>
-    
+
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="title-popup">Best Match</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="body-popup"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
