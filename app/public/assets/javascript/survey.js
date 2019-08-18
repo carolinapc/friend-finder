@@ -83,10 +83,10 @@ $(document).ready(() => {
                 $("#title-popup").text("Closest Match");
                 let $img = $(`<img src="${data.match.photo}">`);
 
+                //show the modal with the match info
                 $("#body-popup").empty();
                 $("#body-popup").append($("<p id='match-name' class='text-center'>").text(data.match.name));    
                 $("#body-popup").append($img);
-
                 $('#myModal').modal('show');
 
                 //clear the fields
