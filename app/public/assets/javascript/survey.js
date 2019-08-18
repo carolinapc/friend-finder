@@ -88,6 +88,15 @@ $(document).ready(() => {
                 $("#body-popup").append($img);
 
                 $('#myModal').modal('show');
+
+                //clear the fields
+                $("#name").val("");
+                $("#photo").val("");
+                for (let i = 0; i < questions.length; i++){
+                    $(`input[name='question${i}']`).prop("checked", false);
+                    $(`input[name='question${i}']`).parents("label").removeClass("active");
+                }
+
             }
             else {
                 showErrorPopup(data.message);
