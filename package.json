@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/carolinapc/friend-finder#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "xmlhttprequest": "^1.8.0"
   }
 }
